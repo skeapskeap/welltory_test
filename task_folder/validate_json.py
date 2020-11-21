@@ -13,6 +13,7 @@ def json_data(filename):
 
 
 def validate_json():
+    row = 0
     for s in schema_files:
         for j in json_files:
             s_name = str(s).split(os_sep)[-1]
@@ -22,9 +23,10 @@ def validate_json():
                 validate(instance=json_data(j), schema=json_data(s))
                 result = f'Validation passed for {j_name} with schema {s_name}'
             except exceptions.ValidationError as err:
-                result = f'Error occured while validating {j_name} with schema {s_name}; {err.message}'
+                result = f'Error occured while validating {j_name} with schema {s_name};<br>__{err.message}__'
 
-            logger.info(result)
+            logger.info(str(row) + '. ' + result + '<br>')
+            row += 1
 
 
 if __name__ == '__main__':
