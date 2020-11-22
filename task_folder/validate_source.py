@@ -25,6 +25,9 @@ def valid_file(filename: str):
 
 
 def get_valid_json_files():
+    '''
+    returns filenames with abs path
+    '''
     current_path = Path.cwd()
 
     json_dir = current_path / 'event'
